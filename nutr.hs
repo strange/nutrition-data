@@ -15,7 +15,7 @@ items :: String -> [[String]]
 items x = filter ((== 62) . length) $ map (split) $ lines x
 
 matches :: String -> [[String]] -> [[String]]
-matches needle haystacks = filter (search needle) haystacks
+matches needle = filter (search needle)
 
 search :: String -> [String] -> Bool
 search needle haystack = or $ map (isPrefixOf (lower needle)) $ tails name
