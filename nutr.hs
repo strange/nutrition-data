@@ -19,8 +19,8 @@ matches needle haystacks = filter (search needle) haystacks
 
 search :: String -> [String] -> Bool
 search needle haystack = or $ map (isPrefixOf (lower needle)) $ tails name
-    where lower = map (toLower)
-          name = lower $ haystack !! 0
+                         where lower = map (toLower)
+                               name = lower $ haystack !! 0
 
 output :: [[String]] -> IO ()
 output results = mapM_ (putStrLn . format) results
@@ -39,9 +39,9 @@ format result = printf fstring name carbs protein fat
 
 split :: String -> [String]
 split = foldr (splitter) [""]
-    where splitter c acc
-              | c == d, length h == 0 = acc
-              | c == d = "" : acc
-              | otherwise = (c:h) : t
-              where d = ';'
-                    (h:t) = acc
+        where splitter c acc
+                  | c == d, length h == 0 = acc
+                  | c == d = "" : acc
+                  | otherwise = (c:h) : t
+                  where d = ';'
+                        (h:t) = acc
