@@ -34,8 +34,7 @@ format result = printf fstring name carbs protein fat
                       fstring = "%s\n \tCHO: %s%%\
                                     \ \tPRO: %s%%\
                                     \ \tFat: %s%%\n"
-                      replaceComma xs = map (f) xs
-                      f x = if x == ',' then '.' else x
+                      replaceComma = map (\c -> if c == ',' then '.' else c)
 
 split :: String -> [String]
 split = foldr (splitter) [""]
